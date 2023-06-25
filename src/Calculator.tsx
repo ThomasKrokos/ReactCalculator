@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Calculator() {
-
+const Calculator = () => {
+  //want to try to move these styles out to a css file
     const container = {
         border: '1px solid',
         borderRadius: "20%",
@@ -14,6 +14,14 @@ function Calculator() {
         borderRadius: "15%",
         padding: "25px",
     }
+
+const buttonValues = [
+  '1', '2', '3', '+',  
+  '4', '5', '6', '-',
+  '7', '8', '9', '/',
+  '0', '.', '=', 'X',
+]
+
   return (
 
     <div style={container}>
