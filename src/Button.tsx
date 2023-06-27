@@ -1,17 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
-const Props = {
-    value:String
-}
 
 
-const Button = (props: typeof Props) => {
+
+
+const Button = (key: number, value: string) => {
   return (
-    <div>{props.value}</div>
+    <div>{value}</div>
   )
 }
 
-Button.propTypes = {}
 
 export default Button
