@@ -1,0 +1,28 @@
+
+
+.container {
+    border: "1px solid";
+    border-radius: "15%";
+    padding: "5%";
+    width: "30%";
+    height: "40%";
+    margin: "0 auto";
+  };
+   .buttonContainer {
+    display: "flex";
+    flex-wrap: "wrap";
+
+  }
+   .button {
+    border: "1px solid";
+    border-radius: "15%";
+    padding: "25px";
+    margin: "10px"
+  };
+
+   .inputField {
+    border: "1px solid";
+    padding: "10px";
+
+
+  }
