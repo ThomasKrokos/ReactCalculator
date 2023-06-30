@@ -1,28 +1,29 @@
 
 
 .container {
-    border: "1px solid";
-    border-radius: "15%";
-    padding: "5%";
-    width: "30%";
-    height: "40%";
-    margin: "0 auto";
-  };
-   .buttonContainer {
-    display: "flex";
-    flex-wrap: "wrap";
+    border: 1px solid white;
+    border-radius: 15%;
+    padding: 5%;
+    width: 30%;
+    height: 60%;
+    margin: 0 auto;
+  }
 
+   .buttoncontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
    .button {
-    border: "1px solid";
-    border-radius: "15%";
-    padding: "25px";
-    margin: "10px"
-  };
+    border: 1px solid;
+    border-radius: 15%;
+    padding: 25px;
+    margin: 10px;
+  }
+  
 
-   .inputField {
-    border: "1px solid";
-    padding: "10px";
-
-
+   .inputfield {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: right;
   }
