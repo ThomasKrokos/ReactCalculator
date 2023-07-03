@@ -106,7 +106,7 @@ const Calculator = () => {
       <div className={styles.buttoncontainer}>
         {buttonValues.map((item) => {
           return (
-            <div className={styles.button} onClick={() => SetCurrentNum(item)}>
+            <div className={styles.button} onClick={() => onClick(item)}>
               {item}
             </div>
           );
