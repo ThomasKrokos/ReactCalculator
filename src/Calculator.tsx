@@ -8,11 +8,15 @@ import styles from "./Calculator.module.css";
 // Need to call this function when = is pressed and when second operator is pressed
 // Error handling for pressing multiple operators in a row?
 // Making the inputField able to be typed in  -- lategame
+// Add scientific notation for big numbers
+// write documentation in readme
+
 
 // ERRORS TO CHECK
 // NEED A WAY TO CHECK FOR MULTIPLE . IN NUM
 // NEED A WAY TO CHECK FOR BACK TO BACK OPERATOR PRESSES
 const Calculator = () => {
+  // currentNum is the number that is currently viewable on the calculator screen
   const [currentNum, SetCurrentNum] = useState("0");
 
   // numA and numB will be stored as strings except when executing operation
@@ -62,15 +66,17 @@ const Calculator = () => {
   };
 
   const runOp = (op: string) => {
-    //
+    // if op !="" and numB !=""
     // do numA op numB and then save that to numA
-    // switch to writing to numB
+    // set op to new op
+    // clear numB
+    // set currentNum to numB
     // ERROR CHECKING FOR BACK TO BACK OPERATOR TO BE FIGURED OUT LATER
   };
 
   const updateNum = (numToAppend: string) => {
     // updates current number in scope
-    // ERROR CHECKING FOR BACK TO BACK OPERATOR TO BE FIGURED OUT LATER
+    // ERROR CHECKING FOR MULTIPLE . TO BE FIGURED OUT LATER
   };
 
   const buttonValues = [
