@@ -53,21 +53,17 @@ const Calculator = () => {
     switch (parseButton(buttonValue)) {
       case 1: // parseButton returns 1 if buttonValue is '='
         runEquals(); // execute = logic
-        console.log("= was pressed");
         break;
       case 2: // parseButton returns 2 if buttonValue is 'C'
         clearMem(); // resets calculator memory
-        console.log("clear mem was pressed");
         break;
 
       case 3: // parseButton returns 3 if buttonValue is an operater: ['+', '-', '/' '*']
         runOp(buttonValue); // execute operator logic
-        console.log("an operator was pressed");
         break;
 
       default: // should only reach default if button was a number or '.'
         updateNum(buttonValue); // appends character to currentNum in scope
-        console.log("a number was pressed");
     }
   };
 
