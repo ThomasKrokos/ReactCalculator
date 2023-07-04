@@ -10,6 +10,7 @@ import styles from "./Calculator.module.css";
 // Making the inputField able to be typed in  -- lategame
 // Add scientific notation for big numbers
 // write documentation in readme
+// add size limit to calculator
 
 // ERRORS TO CHECK
 // NEED A WAY TO CHECK FOR MULTIPLE . IN NUM
@@ -41,13 +42,6 @@ const Calculator = () => {
     else return 4;
   };
 
-  // [48, 57] are numbers 46 is .
-  // 61 is =
-  // 43 is +
-  // 47 is /
-  // 45 is -
-  // 88 is X
-  // 67 is C
 
   const onClick = (buttonValue: string) => {
     switch (parseButton(buttonValue)) {
@@ -73,7 +67,7 @@ const Calculator = () => {
     SetNumA("");
     SetNumB("");
     SetOp("");
-    SetCurrentNum(0);
+    SetCurrentNum("0");
   };
 
   const runEquals = () => {
