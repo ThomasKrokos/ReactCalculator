@@ -11,7 +11,6 @@ import styles from "./Calculator.module.css";
 // Add scientific notation for big numbers
 // write documentation in readme
 
-
 // ERRORS TO CHECK
 // NEED A WAY TO CHECK FOR MULTIPLE . IN NUM
 // NEED A WAY TO CHECK FOR BACK TO BACK OPERATOR PRESSES
@@ -29,32 +28,56 @@ const Calculator = () => {
     // This function will parse what button is clicked through ascii value of char
     // return boolean to represent if button was num or operator
     // true if op false if num
-    return 1;
+    const asciiCode = buttonValue.charCodeAt(0);
+    if (asciiCode == 61) return 1;
+    else if (asciiCode == 67) return 2;
+    if (
+      asciiCode == 43 ||
+      asciiCode == 45 ||
+      asciiCode == 47 ||
+      asciiCode == 88
+    )
+      return 3;
+    else return 4;
   };
 
-  // if is
+  // [48, 57] are numbers 46 is .
+  // 61 is =
+  // 43 is +
+  // 47 is /
+  // 45 is -
+  // 88 is X
+  // 67 is C
 
   const onClick = (buttonValue: string) => {
     switch (parseButton(buttonValue)) {
       case 1: // parseButton returns 1 if buttonValue is '='
         runEquals(); // execute = logic
+        console.log("= was pressed");
         break;
       case 2: // parseButton returns 2 if buttonValue is 'C'
         clearMem(); // resets calculator memory
+        console.log("clear mem was pressed");
         break;
 
       case 3: // parseButton returns 3 if buttonValue is an operater: ['+', '-', '/' '*']
         runOp(buttonValue); // execute operator logic
+        console.log("an operator was pressed");
         break;
 
       default: // should only reach default if button was a number or '.'
         updateNum(buttonValue); // appends character to currentNum in scope
+        console.log("a number was pressed");
     }
   };
 
   const clearMem = () => {
     // sets numA, numB, and op to initial values
     // probable will set a clear button to this function in the future
+    SetNumA("");
+    SetNumB("");
+    SetOp("");
+    SetCurrentNum(0);
   };
 
   const runEquals = () => {
@@ -77,6 +100,7 @@ const Calculator = () => {
   const updateNum = (numToAppend: string) => {
     // updates current number in scope
     // ERROR CHECKING FOR MULTIPLE . TO BE FIGURED OUT LATER
+    SetCurrentNum((currentNum)=> currentNum+numToAppend)
   };
 
   const buttonValues = [
@@ -100,8 +124,11 @@ const Calculator = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.header}>
         <p className={styles.inputfield}>{currentNum}</p>
+      </div>
+      <div className={styles.button} onClick={() => onClick("C")}>
+        Clear Calculator
       </div>
       <div className={styles.buttoncontainer}>
         {buttonValues.map((item) => {

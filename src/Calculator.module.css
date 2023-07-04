@@ -1,37 +1,33 @@
-
-
 .container {
-    border: 3px solid white;
-    border-radius: 8%;
-    padding: 10% 10% 10% 10%;
-    width: 300px;
-    height: 500px;
-  }
+  border: 3px solid white;
+  border-radius: 8%;
+  padding: 10% 10% 10% 10%;
+  width: 300px;
+  height: 600px;
+}
 
-  .inputfield {
-    border: 1px solid white;
-    padding: 10px 5px 10px 5px;
-    text-align: right;
-    font-size: 40px;
-  }
+.inputfield {
+  border: 1px solid white;
+  padding: 10px 5px 10px 5px;
+  text-align: right;
+  font-size: 40px;
+}
 
-   .buttoncontainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    margin: 2%;
-  }
+.buttoncontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
 
-   .button {
-    border: 1px solid;
-    border-radius: 15%;
-    padding: 20px;
-    margin: 10px;
-  }
+.button {
+  border: 1px solid;
+  border-radius: 15%;
+  padding: 20px;
+  margin: 10px;
+}
 
-  .button:hover {
-    background-color: white;
-    color: black;
-  }
-
+.button:hover {
+  background-color: white;
+  color: black;
+}
