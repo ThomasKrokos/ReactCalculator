@@ -20,8 +20,9 @@ const Calculator = () => {
   const [currentNum, SetCurrentNum] = useState("0");
 
   // numA and numB will be stored as strings except when executing operation
-  const [numA, SetNumA] = useState("0");
-  const [numB, SetNumB] = useState("0");
+  let numA = "";
+  let numB = "";
+  const [onA, setOnA] = useState(true);
   const [op, SetOp] = useState("");
 
   // should potentially consider exporting these functions to another file?
@@ -42,8 +43,11 @@ const Calculator = () => {
     else return 4;
   };
 
-
   const onClick = (buttonValue: string) => {
+    console.log("A is: " + numA)
+    console.log("B is: " + numB)
+    console.log("Current is: " + currentNum)
+
     switch (parseButton(buttonValue)) {
       case 1: // parseButton returns 1 if buttonValue is '='
         runEquals(); // execute = logic
@@ -64,8 +68,9 @@ const Calculator = () => {
   const clearMem = () => {
     // sets numA, numB, and op to initial values
     // probable will set a clear button to this function in the future
-    SetNumA("");
-    SetNumB("");
+    numA = "";
+    numB = "";
+    setOnA(true);
     SetOp("");
     SetCurrentNum("0");
   };
@@ -78,19 +83,60 @@ const Calculator = () => {
     // ERROR CHECKING FOR BACK TO BACK OPERATOR OPERATOR TO BE FIGURED OUT LATER
   };
 
-  const runOp = (op: string) => {
+  const runOp = (newOp: string) => {
     // if op !="" and numB !=""
     // do numA op numB and then save that to numA
     // set op to new op
     // clear numB
     // set currentNum to numB
     // ERROR CHECKING FOR BACK TO BACK OPERATOR TO BE FIGURED OUT LATER
+    if (op === "") {
+      setOnA(false);
+      SetCurrentNum("0");
+      SetOp(newOp);
+    } else {
+      const a = numA ? parseInt(numA) : 0;
+      const b = numB ? parseInt(numB) : 0;
+      let newNum = 0;
+
+      switch (op.charCodeAt(0)) {
+        case 43:
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          newNum = a + b;
+          break;
+
+        case 45:
+          newNum = a - b;
+          break;
+
+        case 47:
+          newNum = a / b;
+          break;
+
+        case 88:
+          newNum = a * b;
+          break;
+      }
+
+      numA = newNum.toString();
+      SetOp(newOp);
+      console.log("Setting current number to " + numA);
+      SetCurrentNum(numA);
+    }
   };
 
   const updateNum = (numToAppend: string) => {
     // updates current number in scope
     // ERROR CHECKING FOR MULTIPLE . TO BE FIGURED OUT LATER
-    SetCurrentNum((currentNum)=> currentNum+numToAppend)
+    if (onA) {
+      numA = numA + numToAppend
+      console.log("Setting current number to " + numA);
+      SetCurrentNum(numA);
+    } else {
+      numB = numB + numToAppend
+      console.log("Setting current number to " + numB);
+      SetCurrentNum(numB);
+    }
   };
 
   const buttonValues = [
