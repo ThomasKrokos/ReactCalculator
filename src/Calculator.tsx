@@ -3,18 +3,11 @@ import { flushSync } from "react-dom";
 import styles from "./Calculator.module.css";
 
 // TODO:
-// Use ASCII values to parse what type of button is pressed
-// Write function that computes the stack and updates value of current number
-// Need to call this function when = is pressed and when second operator is pressed
-// Error handling for pressing multiple operators in a row?
-// Making the inputField able to be typed in  -- lategame
 // Add scientific notation for big numbers
-// write documentation in readme
 // add size limit to calculator
 
 // ERRORS TO CHECK
 // NEED A WAY TO CHECK FOR MULTIPLE . IN NUM
-// NEED A WAY TO CHECK FOR BACK TO BACK OPERATOR PRESSES
 const Calculator = () => {
   // currentNum is the number that is currently viewable on the calculator screen
   const [currentNum, SetCurrentNum] = useState("0");
