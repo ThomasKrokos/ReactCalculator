@@ -6,19 +6,14 @@ import styles from "./Calculator.module.css";
 // Add scientific notation for big numbers
 // add size limit to calculator
 
-// ERRORS TO CHECK
-// NEED A WAY TO CHECK FOR MULTIPLE . IN NUM
 const Calculator = () => {
-  // currentNum is the number that is currently viewable on the calculator screen
   const [currentNum, SetCurrentNum] = useState("0");
 
-  // numA and numB will be stored as strings except when executing operation
   const numARef = useRef("");
   const numBRef = useRef("");
   const [onA, setOnA] = useState(true);
   const [op, SetOp] = useState("");
 
-  // should potentially consider exporting these functions to another file?
   const parseButton = (buttonValue: string) => {
     const asciiCode = buttonValue.charCodeAt(0);
     if (asciiCode == 61) return 1;
@@ -52,8 +47,6 @@ const Calculator = () => {
   };
 
   const clearMem = () => {
-    // sets numA, numB, and op to initial values
-    // probable will set a clear button to this function in the future
     numARef.current = "";
     numBRef.current = "";
     setOnA(true);
@@ -62,7 +55,6 @@ const Calculator = () => {
   };
 
   const runEquals = () => {
-    // ERROR CHECKING FOR BACK TO BACK OPERATOR OPERATOR TO BE FIGURED OUT LATER
     if (op === "") {
       console.debug("nothing to execute, skipping = logic");
     } else {
@@ -87,7 +79,6 @@ const Calculator = () => {
           newNum = a * b;
           break;
       }
-      // let roundDecimal = parseFloat(newNum.toString().split('.')[1]).toFixed;
 
       numARef.current = parseFloat(newNum.toFixed(6)).toString();
       SetCurrentNum(numARef.current);
@@ -95,14 +86,12 @@ const Calculator = () => {
   };
 
   const runOp = (newOp: string) => {
-    // ERROR CHECKING FOR BACK TO BACK OPERATOR TO BE FIGURED OUT LATER
     numBRef.current = "";
     setOnA(false);
     SetOp(newOp);
   };
 
   const updateNum = (numToAppend: string) => {
-    // ERROR CHECKING FOR MULTIPLE . TO BE FIGURED OUT LATER
     if (onA) {
       if (numARef.current.indexOf(".") > 0 && numToAppend === ".") return;
       numARef.current = numARef.current + numToAppend;
