@@ -66,13 +66,12 @@ const Calculator = () => {
     if (op === "") {
       console.debug("nothing to execute, skipping = logic");
     } else {
-      const a = numARef.current ? parseInt(numARef.current) : 0;
-      const b = numBRef.current ? parseInt(numBRef.current) : 0;
-      let newNum = 0;
+      const a = numARef.current ? parseFloat(numARef.current) : 0.00;
+      const b = numBRef.current ? parseFloat(numBRef.current) : 0.00;
+      let newNum = 0.00;
 
       switch (op.charCodeAt(0)) {
         case 43:
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           newNum = a + b;
           break;
 
@@ -88,8 +87,9 @@ const Calculator = () => {
           newNum = a * b;
           break;
       }
+      // let roundDecimal = parseFloat(newNum.toString().split('.')[1]).toFixed;
 
-      numARef.current = newNum.toString();
+      numARef.current = parseFloat(newNum.toFixed(6)).toString();
       SetCurrentNum(numARef.current);
     }
   };
@@ -104,9 +104,11 @@ const Calculator = () => {
   const updateNum = (numToAppend: string) => {
     // ERROR CHECKING FOR MULTIPLE . TO BE FIGURED OUT LATER
     if (onA) {
+      if (numARef.current.indexOf(".") > 0 && numToAppend === ".") return;
       numARef.current = numARef.current + numToAppend;
       SetCurrentNum(numARef.current);
     } else {
+      if (numBRef.current.indexOf(".") > 0 && numToAppend === ".") return;
       numBRef.current = numBRef.current + numToAppend;
       SetCurrentNum(numBRef.current);
     }
