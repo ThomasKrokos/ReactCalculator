@@ -13,6 +13,7 @@ const Calculator = () => {
   const numBRef = useRef("");
   const [onA, setOnA] = useState(true);
   const [op, SetOp] = useState("");
+  const memStack = useRef([] as string[]);
 
   const parseButton = (buttonValue: string) => {
     const asciiCode = buttonValue.charCodeAt(0);
@@ -46,6 +47,34 @@ const Calculator = () => {
     }
   };
 
+  const newOnClick = (buttonValue: string) => {
+    const parsedInput = parseButton(buttonValue);
+    if (parsedInput == 1) runEquals();
+    else if (parsedInput == 2) emptyStack();
+    else executeStack(buttonValue, parsedInput == 3);
+  };
+
+  const executeStack = (input: string, isOp: boolean) => {
+    const peek = memStack.current[memStack.current.length - 1];
+    if (!peek) {
+      if (isOp) return;
+      memStack.current.push(input);
+      return;
+    }
+    if (isOp) {
+      
+    } else {
+    
+    }
+  };
+
+  const emptyStack = () => {
+    memStack.current = [];
+    setOnA(true);
+    SetOp("");
+    SetCurrentNum("0");
+  };
+
   const clearMem = () => {
     numARef.current = "";
     numBRef.current = "";
@@ -58,9 +87,9 @@ const Calculator = () => {
     if (op === "") {
       console.debug("nothing to execute, skipping = logic");
     } else {
-      const a = numARef.current ? parseFloat(numARef.current) : 0.00;
-      const b = numBRef.current ? parseFloat(numBRef.current) : 0.00;
-      let newNum = 0.00;
+      const a = numARef.current ? parseFloat(numARef.current) : 0.0;
+      const b = numBRef.current ? parseFloat(numBRef.current) : 0.0;
+      let newNum = 0.0;
 
       switch (op.charCodeAt(0)) {
         case 43:
